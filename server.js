@@ -1,14 +1,16 @@
 // server.js
 
 const express = require('express');
+const path = require('path');
 const app = express();
 const port = 80;
-const crypto = require('crypto')
+const crypto = require('crypto');
+const publicDir = path.join(__dirname, "../public");
 app.listen(port, function(){
   console.log('Server is running on port ' + port + "...");
   
 });
-
+app.app.use(express.static(publicDir));
 app.get("/", (req, res) => {
   res.send("Hello World!")
 })
